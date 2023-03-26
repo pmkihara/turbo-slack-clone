@@ -1,0 +1,6 @@
+<% if notice %>
+  <div data-controller="flashes" data-flashes-type-value="success" data-flashes-message-value="<%= notice %>"></div>
+<% end %>
+<% if alert %>
+  <div data-controller="flashes" data-flashes-type-value="error" data-flashes-message-value="<%= alert %>"></div>
+<% end %>
