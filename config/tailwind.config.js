@@ -9,6 +9,19 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'line-left': '-1px -1px 0 0'
+      },
+      colors: {
+        slack: {
+          'extra-light': '#522653',
+          DEFAULT: '#3F0E40',
+          dark: '#350D36'
+        }
+      },
+      flexGrow: {
+        2: '2'
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },

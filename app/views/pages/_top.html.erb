@@ -1,0 +1,11 @@
+<div id="top" class="bg-slack-dark shadow-line-left shadow-slack-extra-light w-full p-2.5 flex text-white">
+  <div class="grow"></div>
+  <div class="grow-2 max-w-3xl mx-3 bg-white/20 rounded shadow-sm shadow-black">
+    <%= form_with url: '/', method: :get do |f| %>
+      <%= f.text_field :query, class: 'border-0 focus:ring-0 bg-transparent w-full text-sm py-1' %>
+    <% end %>
+  </div>
+  <div class="grow flex justify-end">
+    <%= render 'components/atoms/user_avatar' %>
+  </div>
+</div>
