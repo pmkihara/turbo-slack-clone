@@ -1,0 +1,24 @@
+<div class="h-screen w-screen flex flex-col items-center">
+  <div class="h-6 flex gap-2 items-center my-12">
+    <%= image_tag 'slack_icon.png', class: 'h-full' %>
+    <span class="font-poppins text-2xl">turbo slack clone</span>
+  </div>
+  <div class="grow flex flex-col items-center">
+    <h2 class="text-[2.75rem] font-bold mb-4 leading-10"><%= title %></h2>
+    <p class="text-gray-700 mb-10">We suggest using the <span class="font-medium">email address you use at work.</span></p>
+    <div class="w-96">
+      <%= yield %>
+      <div class="flex gap-4 items-center my-6">
+        <hr class="w-full">
+        <span>OR</span>
+        <hr class="w-full">
+      </div>
+      <div class="text-sm text-gray-500 text-center">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-center my-8 shrink-0 text-sm">
+    <span class="text-gray-500">Made for studying purposes only!</span>
+  </div>
+</div>

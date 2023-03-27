@@ -6,6 +6,8 @@
     <% end %>
   </div>
   <div class="grow flex justify-end">
-    <%= render 'components/atoms/user_avatar' %>
+    <%= link_to destroy_user_session_path, data: { turbo_method: :delete} do %>
+      <%= render 'components/atoms/user_avatar' %>
+    <% end %>
   </div>
 </div>

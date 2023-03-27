@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         slack: {
           'extra-light': '#522653',
+          medium: '#611f69',
           DEFAULT: '#3F0E40',
           dark: '#350D36'
         }
@@ -24,6 +25,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', ...defaultTheme.fontFamily.sans]
       },
     },
   },
