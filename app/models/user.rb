@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Associations
+  has_many :owned_channels, class_name: 'Channel'
+  has_many :memberships
+  has_many :channels, through: :memberships
+
   # Callbacks
   before_save :fill_display_name
 
