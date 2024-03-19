@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_29_224828) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_19_191905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_224828) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
-    t.string "image_url"
     t.string "description"
     t.boolean "private", default: false
     t.bigint "user_id", null: false
@@ -70,6 +69,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_224828) do
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_memberships_on_channel_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "postable_type", null: false
+    t.bigint "postable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postable_type", "postable_id"], name: "index_posts_on_postable"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,4 +102,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_224828) do
   add_foreign_key "channels", "users"
   add_foreign_key "memberships", "channels"
   add_foreign_key "memberships", "users"
+  add_foreign_key "posts", "users"
 end

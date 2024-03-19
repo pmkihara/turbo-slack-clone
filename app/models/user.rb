@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :owned_channels, class_name: 'Channel'
   has_many :memberships
   has_many :channels, through: :memberships
+  has_many :posts
 
   # Callbacks
   before_save :fill_display_name
