@@ -1,6 +1,8 @@
 <div class="bg-slack text-white text-sm p-3 shadow-line-left shadow-slack-extra-light flex flex-col gap-4 overflow-y-auto">
   <% 2.times do %>
-    <%= render 'components/atoms/server_icon', server_name: 'Server', bg_color: 'bg-red-400' %>
+    <div class="h-7 w-7 rounded flex items-center justify-center shrink-0 bg-emerald-500">
+      S
+    </div>
   <% end %>
   <%#= link_to new_channel_path, class: 'rounded h-7 w-7 flex items-center justify-center bg-transparent hover:bg-slack-medium', data: { turbo_frame: 'modal' } do %>
     <i class="fa-solid fa-plus"></i>

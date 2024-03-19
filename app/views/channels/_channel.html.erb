@@ -1,3 +1,4 @@
-<%= turbo_frame_tag channel do %>
-  <%= render 'components/atoms/channel_card', name: channel.name, private: channel.private %>
-<% end %>
+<div class="flex items-center py-1">
+  <i class="mr-2 w-4 text-center <%= channel.private ? 'fa-solid fa-lock' : 'fa-solid fa-hashtag' %>"></i>
+  <span class="grow"><%= channel.name %></span>
+</div>

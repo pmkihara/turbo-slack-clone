@@ -1,7 +1,10 @@
 <%= render 'shared/modal', modal_title: "Create new channel" do %>
   <div>
-    <%= form_with model: @channel, data: { action: 'submit->modal#close' } do |f| %>
-      <%= render 'components/atoms/text_field', f: f, field: :name, field_errors: @channel.errors.messages[:field] ||= [], options: { autofocus: true } %>
+    <%= form_with model: @channel do |f| %>
+      <%= f.text_field :name,
+                       class: 'w-full mb-4 rounded border-gray-300 focus:border-slack-extra-light/50 focus:ring-slack-extra-light/50',
+                       field_errors: @channel.errors.messages[:field] ||= [],
+                       options: { autofocus: true } %>
       <% if @channel.errors.any? %>
         <%= @channel.errors.messages %>
       <% end %>

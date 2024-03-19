@@ -3,7 +3,10 @@
   <div class="flex grow overflow-hidden">
     <%#= render 'far_left' %>
     <%= render 'left', channels: @channels || [] %>
-    <%= render 'center' %>
+    <div class="h-full grow flex flex-col shadow-line-left shadow-gray-200">
+      <%= render 'content' %>
+      <%= render 'bottom' %>
+    </div>
     <%= render 'right' %>
   </div>
 </div>

@@ -15,6 +15,11 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def show
+    @channel = Channel.find(params[:id])
+    @posts = @channel.posts.includes(:user)
+  end
+
   private
 
   def channel_params
