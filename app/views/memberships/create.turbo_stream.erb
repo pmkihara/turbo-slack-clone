@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'modal' do %>
+  <%= turbo_frame_tag :modal %>
+<% end %>
+<%= turbo_stream.append 'channels', @membership.channel %>
+<%= turbo_stream.update 'content', partial: 'channels/channel_content', locals: { channel: @membership.channel } %>

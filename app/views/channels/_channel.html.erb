@@ -1,4 +1,15 @@
-<div class="flex items-center py-1">
-  <i class="mr-2 w-4 text-center <%= channel.private ? 'fa-solid fa-lock' : 'fa-solid fa-hashtag' %>"></i>
-  <span class="grow"><%= channel.name %></span>
-</div>
+<%= turbo_frame_tag channel, target: :content do %>
+  <div class="flex items-center justify-between py-1">
+    <%= link_to channel do %>
+      <div class="flex items-center gap-2">
+        <i class="w-4 text-center <%= channel.private ? 'fa-solid fa-lock' : 'fa-solid fa-hashtag' %>"></i>
+        <span class="grow"><%= channel.name %></span>
+      </div>
+    <% end %>
+    <% unless current_user.channels.include?(channel) %>
+      <%= link_to channel_memberships_path(channel), data: { turbo_method: :post } do %>
+        <i class="fas fa-user-plus"></i>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

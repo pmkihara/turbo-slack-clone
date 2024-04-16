@@ -1,4 +1,8 @@
 class ChannelsController < ApplicationController
+  def index
+    @channels = params[:name] ? search_channels(params[:name]) : nil
+  end
+
   def new
     @channel = Channel.new
   end
@@ -21,6 +25,10 @@ class ChannelsController < ApplicationController
   end
 
   private
+
+  def search_channels(name)
+    Channel.where('name ILIKE ?', "%#{name}%")
+  end
 
   def channel_params
     params.require(:channel).permit(:name, :description).merge(user: current_user)

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag :results do %>
+  <% if @channels.none? %>
+    <p>No channels with name <em><%= params[:name] %></em> found.</p>
+    <%= form_with model: Channel.new do |f| %>
+      <%= f.hidden_field :name, value: params[:name] %>
+      <%= f.submit "Create ##{params[:name]}", class: 'font-bold text-slack cursor-pointer' %>
+    <% end %>
+  <% else %>
+    <% @channels.each do |channel| %>
+      <%= render channel %>
+    <% end %>
+  <% end %>
+<% end %>

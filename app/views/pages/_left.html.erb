@@ -15,11 +15,7 @@
   </div>
   <%= turbo_frame_tag 'channels', class: 'text-sm px-4 py-2 shadow-line-left shadow-slack-extra-light w-full text-white/70' do %>
     <% channels.each do |channel| %>
-      <%= turbo_frame_tag channel, target: :content do %>
-        <%= link_to channel do %>
-          <%= render channel %>
-        <% end %>
-      <% end %>
+      <%= render channel %>
     <% end %>
   <% end %>
 <% end %>

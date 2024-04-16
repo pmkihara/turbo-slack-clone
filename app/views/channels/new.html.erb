@@ -1,14 +1,14 @@
-<%= render 'shared/modal', modal_title: "Create new channel" do %>
-  <div>
-    <%= form_with model: @channel do |f| %>
-      <%= f.text_field :name,
-                       class: 'w-full mb-4 rounded border-gray-300 focus:border-slack-extra-light/50 focus:ring-slack-extra-light/50',
-                       field_errors: @channel.errors.messages[:field] ||= [],
-                       options: { autofocus: true } %>
-      <% if @channel.errors.any? %>
-        <%= @channel.errors.messages %>
-      <% end %>
-      <%= f.submit "Create", class: 'w-full bg-slack-medium text-white rounded p-2 cursor-pointer' %>
-    <% end %>
-  </div>
+<%= render 'shared/modal', modal_title: "Add channel" do %>
+  <%= form_with url: channels_path,
+                method: :get,
+                data: { turbo_frame: :results },
+                class: 'max-h-full flex flex-col overflow-hidden gap-4' do |f| %>
+    <%= f.text_field :name,
+                      class: 'w-full rounded border-gray-300 focus:border-slack-extra-light/50 focus:ring-slack-extra-light/50',
+                      options: { autofocus: true } %>
+      <div class="max-h-full overflow-y-auto">
+        <%= turbo_frame_tag :results %>
+      </div>
+    <%= f.submit "Search", class: 'w-full bg-slack-medium text-white rounded p-2 cursor-pointer' %>
+  <% end %>
 <% end %>

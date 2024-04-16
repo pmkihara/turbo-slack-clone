@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: additional_fields)
   end
+
+  def render_notice(message)
+    render turbo_stream: turbo_stream.replace('flashes', partial: 'shared/flashes', locals: { notice: message })
+  end
+
+  def render_alert(message)
+    render turbo_stream: turbo_stream.replace('flashes', partial: 'shared/flashes', locals: { alert: message })
+  end
 end
