@@ -12,3 +12,44 @@
 
 */
 @import 'actiontext.css';
+
+trix-editor, trix-toolbar .trix-button-row, trix-toolbar .trix-button-group {
+  border: none !important;
+}
+
+trix-editor {
+  @apply p-2;
+  max-height: 25vh;
+  overflow: auto;
+}
+
+trix-toolbar .trix-button-row {
+  overflow: hidden;
+  @apply p-2;
+  @apply bg-gray-100;
+}
+
+trix-toolbar .trix-button-group {
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+trix-toolbar .trix-button {
+  @apply !rounded;
+  border: none !important;
+  padding: 4px;
+
+  &:not(:disabled):hover {
+    @apply bg-gray-300;
+  }
+  &.trix-active {
+    @apply !bg-gray-300;
+  }
+}
+
+trix-toolbar .trix-button--icon {
+  width: 1.6em;
+  &::before {
+    opacity: 0.5;
+  }
+}

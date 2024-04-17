@@ -1,0 +1,12 @@
+<%= turbo_frame_tag post,
+                    class: "flex w-full px-4 py-2 hover:bg-gray-100",
+                    data: { controller: 'autoscroll' } do %>
+  <%= render 'components/atoms/user_avatar', avatar_size: 'h-10 w-10' %>
+  <div class="pl-2">
+    <span class="mr-2 font-bold"><%= post.user.display_name %></span>
+    <span class="text-xs text-gray-400"><%= post.created_at.strftime("%l:%M%p") %></span>
+    <div class="text-sm">
+      <%= post.rich_content %>
+    </div>
+  </div>
+<% end %>

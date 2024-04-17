@@ -1,6 +1,6 @@
-<%= turbo_frame_tag :left, class: 'w-52 bg-slack text-white text-sm shadow-line-left shadow-slack-extra-light flex flex-col overflow-y-auto h-full' do %>
+<%= turbo_frame_tag :left, class: 'w-52 bg-slack text-white text-sm shadow-line-left shadow-slack-extra-light flex flex-col overflow-y-auto h-full flex-shrink-0' do %>
   <div class="font-bold px-4 shadow-line-left shadow-slack-extra-light w-full h-12 flex items-center justify-between gap-4 shrink-0">
-    <div class="w-full text-ellipsis overflow-hidden whitespace-nowrap">Server Name</div>
+    <div class="w-full text-ellipsis overflow-hidden whitespace-nowrap">Turbo Slack Clone</div>
     <%= link_to new_channel_path, class: "rounded-full bg-white p-2 text-slack flex items-center justify-center text-sm", data: { turbo_frame: 'modal' } do %>
       <i class="fa-regular fa-pen-to-square"></i>
     <% end %>

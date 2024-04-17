@@ -3,9 +3,8 @@
   <div class="flex grow overflow-hidden">
     <%#= render 'far_left' %>
     <%= render 'left', channels: @channels || [] %>
-    <div class="h-full grow flex flex-col shadow-line-left shadow-gray-200">
-      <%= render 'content' %>
-      <%= render 'bottom' %>
+    <div class="h-full grow flex flex-col shadow-line-left shadow-gray-200 max-w-full overflow-auto">
+      <%= turbo_frame_tag :content, class: "h-full grow flex flex-col max-h-full overflow-hidden" %>
     </div>
     <%= render 'right' %>
   </div>

@@ -21,7 +21,8 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
-    @posts = @channel.posts.includes(:user)
+    @posts = @channel.posts.includes(:user).with_rich_text_rich_content.order(:created_at)
+    @post = Post.new
   end
 
   private
