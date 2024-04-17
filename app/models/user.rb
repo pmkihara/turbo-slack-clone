@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Associations
-  has_many :owned_channels, class_name: 'Channel'
-  has_many :memberships
+  has_many :owned_channels, class_name: 'Channel', dependent: :destroy
+  has_many :memberships, dependent: :destroy
   has_many :channels, through: :memberships
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   # Callbacks
   before_save :fill_display_name

@@ -3,7 +3,7 @@ class Channel < ApplicationRecord
   belongs_to :user
   has_many :memberships, dependent: :destroy
   has_many :members, through: :memberships, source: :user
-  has_many :posts, as: :postable
+  has_many :posts, as: :postable, dependent: :destroy
 
   # Validations
   validates :name, presence: true, uniqueness: true, length: { minimum: 3 }

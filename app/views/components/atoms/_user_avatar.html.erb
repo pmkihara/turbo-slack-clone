@@ -1,3 +1,9 @@
-<div class="<%= avatar_size ||= 'h-7 w-7' %> bg-pink-400 text-white rounded flex items-center justify-center">
-  <i class="fa-solid fa-user"></i>
+<div class="<%= avatar_size ||= 'h-7 w-7' %> rounded flex overflow-hidden flex-shrink-0">
+  <% if user_img %>
+    <img src="<%= user_img %>">
+  <% else %>
+    <div class="bg-pink-400 text-white items-center justify-center">
+      <i class="fa-solid fa-user"></i>
+    </div>
+  <% end %>
 </div>

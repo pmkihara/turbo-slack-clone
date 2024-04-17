@@ -56,6 +56,7 @@ gem "devise"
 
 # Use font-awesome
 gem "font-awesome-sass"
+gem 'faker'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
