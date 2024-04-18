@@ -1,4 +1,0 @@
-<%= turbo_stream.update :new_post,
-                         partial: 'posts/form',
-                         locals: { channel: @channel, post: Post.new } %>
-<% @post.broadcast_append_to @channel, target: :posts %>

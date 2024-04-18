@@ -10,7 +10,7 @@
         <% end %>
       <% end %>
       <% if @channel.valid? %>
-        <%= form_with model: @channel, data: { turbo_frame: :content }  do |f| %>
+        <%= form_with model: @channel do |f| %>
           <%= f.hidden_field :name, value: @channel.name %>
           <%= f.submit "Create ##{@channel&.name}", class: 'font-bold text-slack cursor-pointer' %>
         <% end %>

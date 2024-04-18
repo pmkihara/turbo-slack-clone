@@ -1,6 +1,5 @@
 <%= form_with url: channels_path,
-              method: :get,
-              data: { turbo_frame: :results } do |f| %>
+              method: :get do |f| %>
   <%= f.text_field :name,
                     class: 'w-full rounded border-gray-300 focus:border-slack-extra-light/50 focus:ring-slack-extra-light/50',
                     options: { autofocus: true } %>
