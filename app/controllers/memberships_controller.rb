@@ -5,8 +5,7 @@ class MembershipsController < ApplicationController
     if @membership.save
       redirect_to channel
     else
-      render_alert('You are already a member of this channel')
-      redirect_to root_path
+      redirect_to root_path, alert: 'You are already a member of this channel'
     end
   end
 end

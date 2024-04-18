@@ -5,7 +5,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @channel
     else
-      render_alert(@post.errors.messages.map { |k, v| "#{k.capitalize} #{v.join(', ')}" }.join(', '))
+      message = @post.errors.messages.map { |k, v| "#{k.capitalize} #{v.join(', ')}" }.join(', ')
+      flash.now.alert = message
       render 'channels/show', status: :unprocessable_entity
     end
   end

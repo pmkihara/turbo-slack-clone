@@ -11,12 +11,4 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: additional_fields)
   end
-
-  def render_notice(message)
-    flash.notice = message
-  end
-
-  def render_alert(message)
-    flash.alert = message
-  end
 end
