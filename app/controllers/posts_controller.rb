@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @channel
     else
+      render_alert(@post.errors.messages.map { |k, v| "#{k.capitalize} #{v.join(', ')}" }.join(', '))
       render 'channels/show', status: :unprocessable_entity
     end
   end
@@ -12,6 +13,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:rich_content).merge(user: current_user, postable: @channel)
+    params.require(:post).permit(:content).merge(user: current_user, postable: @channel)
   end
 end

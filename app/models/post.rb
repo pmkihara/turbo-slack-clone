@@ -3,13 +3,13 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :postable, polymorphic: true
   has_many :replies, as: :postable, class_name: 'Post', dependent: :destroy
-  has_rich_text :rich_content
+  has_rich_text :content
 
   # Callback
   before_save :flatten_parent_postable
 
   # Validations
-  validates_presence_of :rich_content
+  validates_presence_of :content
 
   private
 

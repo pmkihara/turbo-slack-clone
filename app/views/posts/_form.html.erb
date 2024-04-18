@@ -1,5 +1,5 @@
 <%= form_with model: [channel, post] do |f| %>
-  <%= f.rich_text_area :rich_content, placeholder: 'Start a new message' %>
+  <%= f.rich_text_area :content, placeholder: 'Start a new message' %>
   <div class="flex justify-end">
     <%= f.button do %>
       <i class="fas fa-paper-plane opacity-50 p-2"></i>

@@ -55,7 +55,7 @@ puts 'Creating posts...'
   Post.create(
     user:,
     postable: channel,
-    rich_content: case user
+    content: case user
                   when kitty
                     Faker::TvShows::BigBangTheory.quote
                   when doggy
