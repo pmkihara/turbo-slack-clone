@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   # Callback
   before_save :flatten_parent_postable
 
+  # Validations
+  validates_presence_of :rich_content
+
   private
 
   def flatten_parent_postable
