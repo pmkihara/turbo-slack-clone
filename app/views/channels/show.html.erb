@@ -1,16 +1,22 @@
-<%= turbo_frame_tag :content do %>
-  <div class="flex gap-2 font-bold px-4 shadow-line-left shadow-gray-200 w-full h-12 shrink-0 items-center justify-center">
-    <span class="grow"><%= render @channel %></span>
+<div class="h-full flex flex-col">
+  <%= render 'pages/top' %>
+  <div class="flex grow overflow-hidden">
+    <%= render 'pages/left', channels: current_user.channels || [] %>
+    <div class="h-full grow flex flex-col shadow-line-left shadow-gray-200 max-w-full overflow-auto">
+      <div class="flex gap-2 font-bold px-4 shadow-line-left shadow-gray-200 w-full h-12 shrink-0 items-center justify-center">
+        <span class="grow"><%= render @channel %></span>
+      </div>
+      <div class="grow shrink shadow-line-left shadow-gray-200 w-full overflow-y-auto">
+        <div id='posts'>
+          <% @posts.each do |post| %>
+            <%= render post %>
+          <% end %>
+        </div>
+      </div>
+      <div id='new-post' class="m-4 border-2 rounded-xl shrink-0 overflow-hidden">
+        <%= render 'posts/form', channel: @channel, post: @post %>
+      </div>
+    </div>
+    <%= render 'pages/right' %>
   </div>
-  <div class="grow shrink shadow-line-left shadow-gray-200 w-full overflow-y-auto">
-    <%= turbo_stream_from(@channel) %>
-    <%= turbo_frame_tag :posts do %>
-      <% @posts.each do |post| %>
-        <%= render post %>
-      <% end %>
-    <% end %>
-  </div>
-  <%= turbo_frame_tag :new_post, class: "m-4 border-2 rounded-xl shrink-0 overflow-hidden" do %>
-    <%= render 'posts/form', channel: @channel, post: @post %>
-  <% end %>
-<% end %>
+</div>

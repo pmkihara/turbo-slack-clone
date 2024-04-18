@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
   def index
     @channels = params[:name] ? search_channels(params[:name]) : nil
+    @new_channel = Channel.new(name: params[:name], user: current_user)
   end
 
   def new
@@ -10,10 +11,7 @@ class ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     if @channel.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to root_path, notice: 'Channel successfully created' }
-      end
+      redirect_to @channel, notice: 'Channel successfully created'
     else
       render :new, status: :unprocessable_entity
     end
