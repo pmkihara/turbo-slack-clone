@@ -1,7 +1,9 @@
-<%= turbo_frame_tag :left, class: 'w-52 bg-slack text-white text-sm shadow-line-left shadow-slack-extra-light flex flex-col overflow-y-auto h-full flex-shrink-0' do %>
+<div id="left" class='w-52 bg-slack text-white text-sm shadow-line-left shadow-slack-extra-light flex flex-col overflow-y-auto h-full flex-shrink-0'>
   <div class="font-bold px-4 shadow-line-left shadow-slack-extra-light w-full h-12 flex items-center justify-between gap-4 shrink-0">
-    <div class="w-full text-ellipsis overflow-hidden whitespace-nowrap">Turbo Slack Clone</div>
-    <%= link_to new_channel_path, class: "rounded-full bg-white p-2 text-slack flex items-center justify-center text-sm", data: { turbo_frame: 'modal' } do %>
+    <%= link_to root_path do %>
+      <div class="w-full text-ellipsis overflow-hidden whitespace-nowrap">Turbo Slack Clone</div>
+    <% end %>
+    <%= link_to new_channel_path, class: "rounded-full bg-white p-2 text-slack flex items-center justify-center text-sm" do %>
       <i class="fa-regular fa-pen-to-square"></i>
     <% end %>
   </div>
@@ -13,9 +15,9 @@
       </div>
     <% end %>
   </div>
-  <%= turbo_frame_tag 'channels', class: 'text-sm px-4 py-2 shadow-line-left shadow-slack-extra-light w-full text-white/70' do %>
+  <div id='channels' class='text-sm px-4 py-2 shadow-line-left shadow-slack-extra-light w-full text-white/70'>
     <% channels.each do |channel| %>
       <%= render channel %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>

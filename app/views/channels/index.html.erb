@@ -1,13 +1,28 @@
-<%= turbo_frame_tag :results do %>
-  <% if @channels.none? %>
-    <p>No channels with name <em><%= params[:name] %></em> found.</p>
-    <%= form_with model: Channel.new do |f| %>
-      <%= f.hidden_field :name, value: params[:name] %>
-      <%= f.submit "Create ##{params[:name]}", class: 'font-bold text-slack cursor-pointer' %>
+<%= render 'shared/modal', modal_title: "Add channel" do %>
+  <div class="max-h-full flex flex-col overflow-hidden gap-4">
+    <%= form_with url: channels_path,
+                  method: :get do |f| %>
+      <%= f.text_field :name,
+                        class: 'w-full rounded border-gray-300 focus:border-slack-extra-light/50 focus:ring-slack-extra-light/50',
+                        options: { autofocus: true } %>
+      <%= f.submit "Search", class: 'mt-4 w-full bg-slack-medium text-white rounded p-2 cursor-pointer' %>
     <% end %>
-  <% else %>
-    <% @channels.each do |channel| %>
-      <%= render channel %>
-    <% end %>
-  <% end %>
+    <div class="max-h-full overflow-y-auto">
+      <div id="results">
+        <% if @channels.none? %>
+          <p>No channels with name <em><%= params[:name] %></em> found.</p>
+        <% else %>
+          <% @channels.each do |channel| %>
+            <%= render channel %>
+          <% end %>
+        <% end %>
+        <% if @new_channel.valid? %>
+          <%= form_with model: @new_channel do |f| %>
+            <%= f.hidden_field :name, value: @new_channel.name %>
+            <%= f.submit "Create ##{@new_channel.name}", class: 'font-bold text-slack cursor-pointer' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>

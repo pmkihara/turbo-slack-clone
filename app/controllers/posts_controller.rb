@@ -3,10 +3,7 @@ class PostsController < ApplicationController
     @channel = Channel.find(params[:channel_id])
     @post = Post.new(post_params)
     if @post.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to @channel }
-      end
+      redirect_to @channel
     else
       render :new, status: :unprocessable_entity
     end

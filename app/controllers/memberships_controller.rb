@@ -3,12 +3,10 @@ class MembershipsController < ApplicationController
     channel = Channel.find(params[:channel_id])
     @membership = Membership.new(user: current_user, channel:)
     if @membership.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to channel }
-      end
+      redirect_to channel
     else
       render_alert('You are already a member of this channel')
+      redirect_to root_path
     end
   end
 end

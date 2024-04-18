@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def render_notice(message)
-    render turbo_stream: turbo_stream.replace('flashes', partial: 'shared/flashes', locals: { notice: message })
+    flash.notice = message
   end
 
   def render_alert(message)
-    render turbo_stream: turbo_stream.replace('flashes', partial: 'shared/flashes', locals: { alert: message })
+    flash.alert = message
   end
 end
