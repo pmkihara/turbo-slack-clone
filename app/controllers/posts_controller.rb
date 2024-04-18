@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @channel
     else
-      render :new, status: :unprocessable_entity
+      render 'channels/show', status: :unprocessable_entity
     end
   end
 

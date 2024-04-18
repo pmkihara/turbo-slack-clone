@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :flashes do %>
+<%= tag.div id: :flashes do %>
   <% if notice %>
     <div data-controller="flashes" data-flashes-type-value="success" data-flashes-message-value="<%= notice %>"></div>
   <% end %>
