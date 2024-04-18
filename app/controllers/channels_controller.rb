@@ -1,7 +1,7 @@
 class ChannelsController < ApplicationController
   def index
     @channels = params[:name] ? search_channels(params[:name]) : nil
-    @new_channel = Channel.new(name: params[:name], user: current_user)
+    @channel = Channel.new(name: params[:name], user: current_user)
   end
 
   def new
@@ -13,7 +13,7 @@ class ChannelsController < ApplicationController
     if @channel.save
       redirect_to @channel, notice: 'Channel successfully created'
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
