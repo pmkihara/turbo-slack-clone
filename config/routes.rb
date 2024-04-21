@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :channels, except: %i[edit update destroy] do
     resources :memberships, only: %i[create]
-    resources :posts, only: %i[create]
+    resources :posts, only: %i[create update]
+  end
+  resources :posts, only: %i[show edit destroy] do
+    resources :posts, only: %i[create update]
   end
 
   # Defines the root path route ("/")

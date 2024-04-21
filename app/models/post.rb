@@ -11,6 +11,14 @@ class Post < ApplicationRecord
   # Validations
   validates_presence_of :content
 
+  def channel
+    postable.instance_of?(Channel) ? postable : postable.postable
+  end
+
+  def edited?
+    content.created_at != content.updated_at
+  end
+
   private
 
   def flatten_parent_postable

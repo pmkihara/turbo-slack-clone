@@ -20,6 +20,7 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     @post = Post.new
+    @show_replies = true
   end
 
   private

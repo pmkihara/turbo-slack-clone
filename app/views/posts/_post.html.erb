@@ -1,10 +1,33 @@
-<div id=<%= post.id %> class="flex w-full px-4 py-2 hover:bg-gray-100">
-  <%= render 'components/atoms/user_avatar', avatar_size: 'h-10 w-10', user_img: post.user.image_url %>
+<div id=<%= post.id %> class="flex flex-col w-full px-4 py-2 hover:bg-gray-100 relative group">
+  <%= user_avatar(user_image: post.user.image_url, avatar_size: 'h-10 w-10') %>
   <div class="pl-2">
     <span class="mr-2 font-bold"><%= post.user.display_name %></span>
     <span class="text-xs text-gray-400"><%= post.created_at.strftime("%l:%M%p") %></span>
     <div class="text-sm">
       <%= post.content %>
+      <span class="text-xs text-gray-400"><%= '(edited)' if post.edited? %></span>
     </div>
   </div>
+  <div class="hidden group-hover:block absolute right-2 top-2 bg-white rounded border px-2">
+    <div class="flex">
+      <% if post.user == current_user %>
+        <%= link_to edit_post_path(post),
+                    class: 'opacity-50 hover:opacity-100 hover:text-slack p-2' do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to post_path(post),
+                    class: 'opacity-50 hover:opacity-100 hover:text-slack p-2',
+                    data: { turbo_method: :delete } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
+      <% if post.postable.instance_of?(Channel) %>
+        <%= link_to post_path(post),
+                    class: 'opacity-50 hover:opacity-100 hover:text-slack p-2' do %>
+        <i class="far fa-comment-dots"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= replies_link post  if @show_replies && post.replies.any? %>
 </div>
