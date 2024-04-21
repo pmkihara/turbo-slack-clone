@@ -1,7 +1,12 @@
-<%= form_with model: [postable, post] do |f| %>
-  <%= f.rich_text_area :content, placeholder: 'Start a new message' %>
+<%= form_with model: [postable, post], data: { controller: 'trix' } do |f| %>
+  <%= f.rich_text_area :content,
+                       placeholder: 'Start a new message',
+                       data: {
+                        action: 'keydown->trix#submitWithReturn',
+                        trix_target: 'trixEditor'
+                       } %>
   <div class="flex justify-end">
-    <%= f.button do %>
+    <%= f.button data: { trix_target: 'button' } do %>
       <i class="fas fa-paper-plane opacity-50 p-2"></i>
     <% end %>
   </div>
