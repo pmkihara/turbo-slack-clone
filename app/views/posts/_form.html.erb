@@ -1,4 +1,4 @@
-<%= form_with model: [channel, post] do |f| %>
+<%= form_with model: [postable, post] do |f| %>
   <%= f.rich_text_area :content, placeholder: 'Start a new message' %>
   <div class="flex justify-end">
     <%= f.button do %>
