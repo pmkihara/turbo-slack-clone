@@ -47,7 +47,7 @@ module PostsHelper
   end
 
   def wrapper_cls
-    %w[flex border rounded border-transparent hover:border-gray-300 hover:bg-white -mx-1 p-1 items-center] +
+    %w[flex border rounded border-transparent hover:border-gray-300 hover:bg-white -mx-1 p-1 items-center ] +
       %w[group/thread justify-between]
   end
 end

@@ -1,12 +1,12 @@
-<%= form_with model: [postable, post], data: { controller: 'trix' } do |f| %>
-  <%= f.rich_text_area :content,
-                       placeholder: 'Start a new message',
-                       data: {
-                        action: 'keydown->trix#submitWithReturn',
-                        trix_target: 'trixEditor'
-                       } %>
+<%= form_with model: [postable, post], data: { controller: 'trix' } do |form| %>
+  <%= form.rich_text_area :content,
+                          placeholder: 'Start a new message',
+                          data: {
+                            action: 'keydown->trix#submitWithReturn',
+                            trix_target: 'trixEditor'
+                          } %>
   <div class="flex justify-end">
-    <%= f.button data: { trix_target: 'button' } do %>
+    <%= form.button data: { trix_target: 'button' } do %>
       <i class="fas fa-paper-plane opacity-50 p-2"></i>
     <% end %>
   </div>
