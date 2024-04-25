@@ -1,13 +1,21 @@
 <%= form_with model: [postable, post], data: { controller: 'trix' } do |form| %>
   <%= form.rich_text_area :content,
                           placeholder: 'Start a new message',
+                          id: dom_id(postable, :form),
                           data: {
                             action: 'keydown->trix#submitWithReturn',
                             trix_target: 'trixEditor'
                           } %>
   <div class="flex justify-end">
-    <%= form.button data: { trix_target: 'button' } do %>
-      <i class="fas fa-paper-plane opacity-50 p-2"></i>
+    <% if post.new_record? %>
+      <%= form.button data: { trix_target: 'button' } do %>
+        <i class="fas fa-paper-plane opacity-50 p-2"></i>
+      <% end %>
+    <% else %>
+      <div class="flex gap-2 p-2">
+        <%= link_to 'Cancel', postable, class: 'border rounded border-gray-500 text-gray-500 px-4 py-2 hover:bg-gray-100/50' %>
+        <%= form.button 'Save', data: { trix_target: 'button' }, class: 'border rounded border-transparent text-white bg-slack px-4 py-2 hover:bg-slack-dark' %>
+      </div>
     <% end %>
   </div>
 <% end %>

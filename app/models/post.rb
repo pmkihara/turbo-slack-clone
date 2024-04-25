@@ -19,6 +19,10 @@ class Post < ApplicationRecord
     content.created_at != content.updated_at
   end
 
+  def reply?
+    postable.instance_of? Post
+  end
+
   private
 
   def flatten_parent_postable

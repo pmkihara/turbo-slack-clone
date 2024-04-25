@@ -1,33 +1,35 @@
 <div class="h-full flex flex-col">
   <%= render 'pages/top' %>
   <div class="flex grow overflow-hidden">
-    <%= render 'pages/left', channels: current_user.channels || [] %>
-      <div class="w-full shadow-line-left shadow-gray-200 overflow-y-auto flex flex-col">
-        <div class="flex gap-2 font-bold px-4 shadow-line-left shadow-gray-200 w-full h-12 shrink-0 items-center justify-between">
-          <span>Thread</span>
-          <%= link_to channel_path(@post.channel) do %>
-            <i class="fas fa-times p-3"></i>
-          <% end %>
-        </div>
-        <div class="grow shrink w-full overflow-y-auto">
-          <%= render @post %>
-          <div id='replies'>
-            <% if @replies.any? %>
-              <div class="flex gap-2 px-4 w-full">
-                <span class="shrink-0 text-sm text-gray-400">
-                  <%= @replies.count %> <%= 'reply'.pluralize(@post.replies.count) %>
-                </span>
-                <span class="border-t w-full m-auto grow-1"></span>
-              </div>
+    <%= render 'pages/left' %>
+    <div class="w-full h-full shadow-line-left shadow-gray-200 overflow-y-auto flex flex-col">
+      <div class="flex gap-2 font-bold px-4 shadow-line-left shadow-gray-200 w-full h-12 shrink-0 items-center justify-between">
+        <span>Thread</span>
+        <%= link_to channel_path(@post.channel) do %>
+          <i class="fas fa-times p-3"></i>
+        <% end %>
+      </div>
+      <div class="grow shrink w-full overflow-y-auto">
+        <%= render @post %>
+        <div>
+          <% if @replies.any? %>
+            <div class="flex gap-2 px-4 w-full">
+              <span class="shrink-0 text-sm text-gray-400">
+                <%= @replies.count %> <%= 'reply'.pluralize(@post.replies.count) %>
+              </span>
+              <span class="border-t w-full m-auto grow-1"></span>
+            </div>
+            <div id="posts">
               <% @replies.each do |reply| %>
                 <%= render reply %>
               <% end %>
-            <% end %>
-          </div>
-        </div>
-        <div id='new-reply' class="m-4 border-2 rounded-xl shrink-0 overflow-hidden">
-          <%= render 'posts/form', postable: @post, post: Post.new %>
+            </div>
+          <% end %>
         </div>
       </div>
+      <div id='new-reply' class="m-4 border-2 rounded-xl shrink-0 overflow-hidden">
+        <%= render 'posts/form', postable: @post, post: Post.new %>
+      </div>
+    </div>
   </div>
 </div>
