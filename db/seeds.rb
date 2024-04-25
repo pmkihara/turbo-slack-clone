@@ -41,8 +41,12 @@ puts "Users created!"
 puts 'Creating channels...'
 channel = Channel.create!(name: 'Purrfect Paws', user: kitty)
 Channel.create!(name: 'No nap no life', user: sloth)
-Channel.create!(name: 'Hopping friends', user: bunny)
-Channel.create!(name: 'Goodest bois and gurls', user: doggy)
+Channel.create!(name: 'Hoppy Hour', user: bunny)
+Channel.create!(name: 'Wooftube', user: doggy)
+Channel.create!(name: 'Goodest bois and gurls', user: users.sample)
+Channel.create!(name: 'Pawsome tales', user: users.sample)
+Channel.create!(name: 'Snuggle squat', user: users.sample)
+Channel.create!(name: 'Paws and Pause', user: users.sample)
 puts "Channels created!"
 
 puts 'Creating memberships...'
@@ -56,15 +60,15 @@ puts 'Creating posts...'
     user:,
     postable: channel,
     content: case user
-                  when kitty
-                    Faker::TvShows::BigBangTheory.quote
-                  when doggy
-                    Faker::TvShows::Friends.quote
-                  when bunny
-                    Faker::TvShows::BrooklynNineNine.quote
-                  else
-                    Faker::TvShows::Spongebob.quote
-                  end
+             when kitty
+               Faker::TvShows::BigBangTheory.quote
+             when doggy
+               Faker::TvShows::Friends.quote
+             when bunny
+               Faker::TvShows::BrooklynNineNine.quote
+             else
+               Faker::TvShows::Spongebob.quote
+             end
   )
 end
 puts 'Posts created!'
