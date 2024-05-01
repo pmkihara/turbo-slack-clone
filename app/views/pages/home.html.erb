@@ -3,7 +3,12 @@
   <div class="flex grow overflow-hidden">
     <%= render 'left' %>
     <div class="h-full grow flex flex-col shadow-line-left shadow-gray-200 max-w-full overflow-auto">
-      <div id='content' class="h-full grow flex flex-col max-h-full overflow-hidden"></div>
+      <div id='content' class="h-full grow flex flex-col max-h-full overflow-hidden">
+        <div class="w-full h-full flex flex-col items-center justify-center gap-4">
+          <h2 class="text-2xl font-bold leading-10">Hello, <%= current_user.display_name %>! 👋</h2>
+          <p>Select a channel or join/create a new one!</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
