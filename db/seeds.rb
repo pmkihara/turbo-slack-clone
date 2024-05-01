@@ -15,32 +15,32 @@ kitty = User.create!(
   email: 'Kitty@email.com',
   password: '123123',
   display_name: 'Kitty',
-  image_url: 'https://img.freepik.com/free-vector/cute-cat-face-logo-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-flat-vector_138676-9478.jpg?w=360'
+  image_url: 'https://img.freepik.com/free-vector/cute-cat-sitting-pizza-cartoon-vector-icon-illustration-animal-food-icon-concept-isolated-flat_138676-9558.jpg?w=240'
 )
 bunny = User.create!(
   email: 'bunny@email.com',
   password: '123123',
   display_name: 'Bunny',
-  image_url: 'https://img.freepik.com/free-vector/cute-rabbit-holding-carrot-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated_138676-5071.jpg?w=360'
+  image_url: 'https://img.freepik.com/free-vector/cute-rabbit-holding-carrot-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated_138676-5071.jpg?w=240'
 )
 doggy = User.create!(
-  email: 'doggy@email.com',
+  email: 'doggo@email.com',
   password: '123123',
-  display_name: 'Doggy',
-  image_url: 'https://img.freepik.com/free-vector/happy-shiba-inu-dog-japan-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3650.jpg?w=360'
+  display_name: 'Doggo',
+  image_url: 'https://img.freepik.com/free-vector/cute-husky-dog-sitting-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium_138676-4567.jpg?w=240'
 )
-sloth = User.create!(
-  email: 'sloth@email.com',
+foxy = User.create!(
+  email: 'foxy@email.com',
   password: '123123',
-  display_name: 'Sloth',
-  image_url: 'https://img.freepik.com/free-vector/cute-sloth-sleeping-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium_138676-6479.jpg?w=360'
+  display_name: 'foxy',
+  image_url: 'https://img.freepik.com/free-vector/cute-fox-sitting-with-scarf-autumn-cartoon-icon-illustration-animal-nature-icon-isolated-flat-cartoon-style_138676-3115.jpg?w=240'
 )
 users = User.all
 puts "Users created!"
 
 puts 'Creating channels...'
 channel = Channel.create!(name: 'Purrfect Paws', user: kitty)
-Channel.create!(name: 'No nap no life', user: sloth)
+Channel.create!(name: 'No nap no life', user: foxy)
 Channel.create!(name: 'Hoppy Hour', user: bunny)
 Channel.create!(name: 'Wooftube', user: doggy)
 Channel.create!(name: 'Goodest bois and gurls', user: users.sample)
