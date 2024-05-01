@@ -1,3 +1,4 @@
+<%= turbo_stream_from @channel %>
 <div class="h-full flex flex-col">
   <%= render 'pages/top' %>
   <div class="flex grow overflow-hidden">
@@ -17,5 +18,6 @@
         <%= render 'posts/form', postable: @channel, post: @post %>
       </div>
     </div>
+    <%= turbo_frame_tag :right, class: 'max-w-[25vw]' %>
   </div>
 </div>

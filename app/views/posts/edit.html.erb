@@ -1,6 +1,8 @@
 <div class="container m-auto">
   <h1 class="mb-4">Edit post</h1>
-  <div class="border-2 rounded-xl shrink-0 overflow-hidden">
-    <%= render 'form', postable: @post.postable, post: @post %>
-  </div>
+  <%= turbo_frame_tag dom_id(@post, :content) do %>
+    <div class="border-2 rounded-xl shrink-0 overflow-hidden bg-white">
+      <%= render 'form', postable: @post.postable, post: @post %>
+    </div>
+  <% end %>
 </div>

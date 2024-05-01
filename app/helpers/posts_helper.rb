@@ -1,6 +1,6 @@
 module PostsHelper
   def replies_link(post)
-    link_to post_path(post) do
+    link_to post_path(post), data: { turbo_frame: :right, turbo_action: :advance } do
       tag.div class: wrapper_cls do
         concat(replies_info(post))
         concat(tag.i(class: 'fas fa-chevron-right text-gray-400 text-transparent group-hover/thread:text-gray-400'))

@@ -11,7 +11,10 @@ class ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     if @channel.save
-      redirect_to @channel, notice: 'Channel successfully created'
+      respond_to do |format|
+        format.html { redirect_to @channel, notice: 'Channel successfully created' }
+        format.turbo_stream
+      end
     else
       render :index, status: :unprocessable_entity
     end

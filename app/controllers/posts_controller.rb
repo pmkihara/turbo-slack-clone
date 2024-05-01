@@ -12,7 +12,10 @@ class PostsController < ApplicationController
 
     @post = Post.new(post_params.merge(user: current_user, postable: @postable))
     if @post.save
-      redirect_to @postable
+      respond_to do |format|
+        format.html { redirect_to @postable }
+        format.turbo_stream
+      end
     else
       flash.now.alert = flat_error_messages
       @channel = @post.channel
