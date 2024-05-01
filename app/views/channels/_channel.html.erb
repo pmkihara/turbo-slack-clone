@@ -1,7 +1,7 @@
 <div class="flex items-center justify-between py-1">
-  <%= link_to channel do %>
-    <div class="flex items-center gap-2">
-      <i class="w-4 text-center <%= channel.private ? 'fa-solid fa-lock' : 'fa-solid fa-hashtag' %>"></i>
+  <%= link_to channel, class: 'hover:text-white/90' do %>
+    <div class="flex gap-2">
+      <i class="w-4 mt-[2.5%] text-center <%= channel.private ? 'fa-solid fa-lock' : 'fa-solid fa-hashtag' %>"></i>
       <span class="grow"><%= channel.name %></span>
     </div>
   <% end %>

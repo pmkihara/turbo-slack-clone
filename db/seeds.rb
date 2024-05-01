@@ -63,12 +63,21 @@ puts 'Creating posts...'
              when kitty
                Faker::TvShows::BigBangTheory.quote
              when doggy
-               Faker::TvShows::Friends.quote
+               Faker::JapaneseMedia::StudioGhibli.quote
              when bunny
-               Faker::TvShows::BrooklynNineNine.quote
+               Faker::Movies::HarryPotter.quote
              else
-               Faker::TvShows::Spongebob.quote
+               Faker::Movies::StarWars.quote
              end
+  )
+end
+post = Post.all.sample
+5.times do
+  user = users.sample
+  Post.create(
+    user:,
+    postable: post,
+    content: Faker::Movie.quote
   )
 end
 puts 'Posts created!'
